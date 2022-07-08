@@ -21,9 +21,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 // convert to class and create concrete subclasses?
 export type Database = {
    objectStores: {
-        columns: (string)[],
-        indexes: (string)[]
-   }
+        [name: string]: {
+            columns: readonly (string)[],
+            indexes: readonly (string)[]
+        }
+    }
 }
 
 export function createObjectStore(schema: Database, objectStore: string): Database & {
@@ -34,9 +36,11 @@ export function createObjectStore(schema: Database, objectStore: string): Databa
 } {
     return {
         ...schema,
-        [objectStore]: {
-            columns: [] as const,
-            indexes: [] as const
+        objectStores: {
+            [objectStore]: {
+                columns: [] as const,
+                indexes: [] as const
+            }
         }
     }
 }
@@ -49,3 +53,7 @@ export function createColumn(schema: Database): Database {
     // no-op (except maybe default value) on indexeddb
     return schema
 }
+
+let start: Database = {
+    objectStores: {}
+};
