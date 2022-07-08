@@ -1,0 +1,22 @@
+{
+  "name": "isomorphic-database",
+  "version": "0.1.0",
+  "description": "Isomorphic interface for a database in the browser and nodejs.",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohe2015/isomorphic-database.git"
+  },
+  "author": "Moritz Hedtke",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mohe2015/isomorphic-database/issues"
+  },
+  "homepage": "https://github.com/mohe2015/isomorphic-database#readme",
+  "dependencies": {
+    "postgres": "^3.2.4"
+  }
+}
