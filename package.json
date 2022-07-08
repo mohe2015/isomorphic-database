@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mohe2015/isomorphic-database/issues"
   },
-  "homepage": "https://github.com/mohe2015/isomorphic-database#readme"
+  "homepage": "https://github.com/mohe2015/isomorphic-database#readme",
+  "dependencies": {
+    "postgres": "^3.2.4"
+  }
 }
