@@ -29,9 +29,11 @@ export type Database = {
 }
 
 export function createObjectStore(schema: Database, objectStore: string): Database & {
-    [K in typeof objectStore]: {
-        columns: string[],
-        indexes: string[],
+    objectStores: {
+        [K in typeof objectStore]: {
+            columns: readonly string[],
+            indexes: readonly string[],
+        }
     }
 } {
     return {
@@ -45,7 +47,7 @@ export function createObjectStore(schema: Database, objectStore: string): Databa
     }
 }
 
-export function createndex(schema: Database, objectStore: string, indexName: String): Database {
+export function createIndex(schema: Database, objectStore: string, indexName: String): Database {
     return schema
 }
 
@@ -54,6 +56,8 @@ export function createColumn(schema: Database): Database {
     return schema
 }
 
-let start: Database = {
+let schema: Database = {
     objectStores: {}
 };
+
+schema = createObjectStore(schema, "test");
