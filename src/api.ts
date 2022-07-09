@@ -28,9 +28,9 @@ export type Database = {
     }
 }
 
-export function createObjectStore(schema: Database, objectStore: string): Database & {
+export function createObjectStore<SCHEMA extends Database, OBJECTSTORENAME extends string>(schema: SCHEMA, objectStore: OBJECTSTORENAME): SCHEMA & {
     objectStores: {
-        [K in typeof objectStore]: {
+        [K in OBJECTSTORENAME]: {
             columns: readonly string[],
             indexes: readonly string[],
         }
@@ -56,8 +56,8 @@ export function createColumn(schema: Database): Database {
     return schema
 }
 
-let schema: Database = {
+let schema = {
     objectStores: {}
-};
+} as const;
 
-schema = createObjectStore(schema, "test");
+let finalSchema = createObjectStore(createObjectStore(schema, "test"), "jo");
