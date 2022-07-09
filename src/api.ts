@@ -36,6 +36,7 @@ export function createObjectStore<SCHEMA extends Database, OBJECTSTORENAME exten
         }
     }
 } {
+    // @ts-expect-error not-typeable
     return {
         ...schema,
         objectStores: {
@@ -60,4 +61,4 @@ let schema = {
     objectStores: {}
 } as const;
 
-let finalSchema = createObjectStore(createObjectStore(schema, "test"), "jo");
+let finalSchema = createObjectStore(createObjectStore(schema, "test" as const), "jo" as const);
